@@ -1,0 +1,693 @@
+{
+ "carte": [
+  {
+   "id": "E1",
+   "n": 1,
+   "titolo": "Malik Kafur",
+   "ordine": [
+    "D",
+    "B",
+    "V"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": false,
+   "sott_u": "Generale assassinato, scoppia una lotta per il potere:",
+   "testo_u": "Sposta tutti i Governatori sulla mappa in Province adiacenti a Delhi. {B}/{V} Ribellione Limitata gratuita (con qualunque Dinastia).",
+   "sott_s": "Il generale schiavo prediletto brilla in battaglia:",
+   "testo_s": "{D} sceglie uno spazio in cui sposta fino a 8 sue Unità da qualunque punto della mappa, può rendere Ribelli tutte le Unità avversarie e può Attaccare gratis."
+  },
+  {
+   "id": "E2",
+   "n": 2,
+   "titolo": "Esercito mongolo respinto",
+   "ordine": [
+    "D",
+    "B",
+    "V"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": true,
+   "sott_u": "Vittoria di Pirro:",
+   "testo_u": "Rimuovi fino a 2 Unità {D} sia nei Passi montani sia nel Punjab.",
+   "sott_s": "L'esercito mercenario del Sultano vince:",
+   "testo_s": "{D} può Attaccare gratis nei Passi montani o nel Punjab, poi può ridistribuire fino a 6 sue Unità fra Passi montani, Punjab e un altro spazio."
+  },
+  {
+   "id": "E3",
+   "n": 3,
+   "titolo": "Le miniere di diamanti di Golconda",
+   "ordine": [
+    "B",
+    "D",
+    "V"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Ricchezze immense appena sotto la superficie:",
+   "testo_u": "In ogni Provincia adiacente a Warangal in cui ha un pezzo, {B}/{V} può Radunare gratis, e guadagna 2{R}.",
+   "sott_s": "La tassazione oppressiva del Sultano:",
+   "testo_s": "In ogni Provincia adiacente a Warangal con un pezzo {D}, {D} può prendere fino a 2{R} da ogni Fazione che vi ha un pezzo."
+  },
+  {
+   "id": "E4",
+   "n": 4,
+   "titolo": "Le orecchie del Sultano",
+   "ordine": [
+    "D",
+    "V",
+    "B"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Piani del Sultano intercettati:",
+   "testo_u": "{V}/{B} può sostituire un Governatore con un Raja/Emiro Obbediente o Ribelle.",
+   "sott_s": "Una rete di spie copre il Deccan:",
+   "testo_s": "{D} può Governare ignorando i requisiti di luogo."
+  },
+  {
+   "id": "E5",
+   "n": 5,
+   "titolo": "L'assedio di Chittor",
+   "ordine": [
+    "V",
+    "D",
+    "B"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": false,
+   "sott_u": "Hammir Singh riconquista un regno Rajput:",
+   "testo_u": "{V}/{B} può sostituire fino a 2 Unità {D} adiacenti a Chittor con Unità Ribelli, e può piazzare un Tempio/Forte nei Regni Rajput.",
+   "sott_s": "Massacro a Chittor:",
+   "testo_s": "{D} può sostituire fino a 3 Unità avversarie adiacenti a Chittor con Truppe, e può piazzare una Qasbah nei Regni Rajput."
+  },
+  {
+   "id": "E6",
+   "n": 6,
+   "titolo": "L'assedio di Warangal",
+   "ordine": [
+    "D",
+    "V",
+    "B"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": true,
+   "sott_u": "I saccheggi continui alimentano la resistenza:",
+   "testo_u": "{V}/{B} può rimuovere un segnalino Tributo e piazzare fino a 2 Raja/Emiri in una Provincia adiacente a Warangal.",
+   "sott_s": "Il diamante Koh-i-Noor nel bottino di guerra:",
+   "testo_s": "{D} può eseguire una Campagna che termina in una Provincia adiacente a Warangal e prendere 3{R} da una Fazione che vi ha un pezzo."
+  },
+  {
+   "id": "E7",
+   "n": 7,
+   "titolo": "La conquista di Madurai",
+   "ordine": [
+    "D",
+    "V",
+    "B"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "La sconfitta del Sultanato di Madurai cantata in un poema epico sanscrito:",
+   "testo_u": "{V}/{B} può piazzare fino a 2 Raja/Emiri nel Tamilakam e guadagna 3 in tutto fra {R}/{C}.",
+   "sott_s": "I generali del Sultano saccheggiano il regno Pandya:",
+   "testo_s": "{D} può piazzare fino a 4 Truppe e un Governatore nel Tamilakam, e guadagna 3 in tutto fra {R}/{C}."
+  },
+  {
+   "id": "E8",
+   "n": 8,
+   "titolo": "Il regno Yadava annesso",
+   "ordine": [
+    "D",
+    "B",
+    "V"
+   ],
+   "resta": false,
+   "np_u": true,
+   "np_s": false,
+   "sott_u": "Uno stato multietnico getta i semi dello sviluppo:",
+   "testo_u": "In ogni Provincia adiacente a Devagiri e/o Gulbarga, {B}/{V} può sostituire 1 Unità {D} con un Emiro/Raja.",
+   "sott_s": "Il Sultanato riprende la roccaforte naturale:",
+   "testo_s": "In ogni Provincia adiacente a Devagiri e/o Gulbarga, {D} può Governare gratis ignorando i requisiti di luogo, e piazzare 1 Truppa."
+  },
+  {
+   "id": "E9",
+   "n": 9,
+   "titolo": "La fine dell'Impero Kakatiya",
+   "ordine": [
+    "D",
+    "V",
+    "B"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Il regno telugu lascia un'eredità mitica:",
+   "testo_u": "+1{IV}. {V} può Costringere in una Provincia adiacente a Warangal che non Controlla, poi Costruire lì.",
+   "sott_s": "Il Sultanato si stanca di attendere il tributo:",
+   "testo_s": "+3{D}{R}. {D} può piazzare fino a 4 Truppe e un Governatore in una Provincia adiacente a Warangal ed Esigere Obbedienza lì."
+  },
+  {
+   "id": "E10",
+   "n": 10,
+   "titolo": "La capitale trasferita",
+   "ordine": [
+    "B",
+    "D",
+    "V"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": true,
+   "sott_u": "Danni politici e caos: l'élite di Delhi è costretta a migrare:",
+   "testo_u": "Sposta fino a 4 Unità {D} da qualunque Provincia in Province adiacenti. −5{D}{R}.",
+   "sott_s": "Il Sultano accorcia il suo braccio nel Deccan:",
+   "testo_s": "{D} può spostare qualsiasi Qasbah in spazi che contengono Governatori. Poi aggiunge fino a 2 Truppe in ogni spazio con una Qasbah."
+  },
+  {
+   "id": "E11",
+   "n": 11,
+   "titolo": "Le montagne dell'Hindu Kush",
+   "ordine": [
+    "D",
+    "B",
+    "V"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "L'esercito del Sultanato muore nella neve in un piano di conquista straniera:",
+   "testo_u": "Piazza fino a 2 Invasori mongoli sia nei Passi montani sia nel Punjab.",
+   "sott_s": "I piani grandiosi danno frutti:",
+   "testo_s": "{D} può rimuovere fino a 4 Invasori mongoli."
+  },
+  {
+   "id": "E12",
+   "n": 12,
+   "titolo": "I Nayaka Musunuri",
+   "ordine": [
+    "V",
+    "D",
+    "B"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "I «re guerrieri» sorgono all'ombra dell'Impero Kakatiya:",
+   "testo_u": "{B}/{V} +2{C}, e può rimuovere fino a 4 pezzi {D} adiacenti a Warangal.",
+   "sott_s": "I guerrieri telugu non reggono alle tecniche d'assedio dell'Asia centrale:",
+   "testo_s": "{D} +2{C}, e può piazzare una Qasbah, fino a 4 Truppe ed eseguire un Attacco Limitato gratuito adiacente a Warangal."
+  },
+  {
+   "id": "E13",
+   "n": 13,
+   "titolo": "Il saggio Vidyaranya",
+   "ordine": [
+    "V",
+    "B",
+    "D"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "L'incontro con il venerato jagadguru di Sringeri fa nascere un mito fondativo:",
+   "testo_u": "+2{IV}. {V} può piazzare i Raja appena ottenuti adiacenti a Vijayanagara.",
+   "sott_s": "Un esercito inferiore subisce le prime sconfitte:",
+   "testo_s": "Sposta un numero qualsiasi di Raja da una Provincia in una Provincia adiacente con un pezzo {B}. {B} può Attaccare {V} lì gratis."
+  },
+  {
+   "id": "E14",
+   "n": 14,
+   "titolo": "L'ultimo grande re degli Hoysala",
+   "ordine": [
+    "V",
+    "B",
+    "D"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Vijayanagara sorge dal regno in rovina di Veera Ballala III:",
+   "testo_u": "{V} +2{C}, e può rimuovere un segnalino Tributo e piazzare fino a 2 Raja adiacenti a Vijayanagara.",
+   "sott_s": "Gli eserciti di Delhi saccheggiano la capitale Hoysala:",
+   "testo_s": "{D} +3{C}, e può piazzare fino a 4 Truppe e un Governatore in una Provincia adiacente a Vijayanagara ed Esigere Obbedienza lì."
+  },
+  {
+   "id": "E15",
+   "n": 15,
+   "titolo": "Rivolta a Daulatabad",
+   "ordine": [
+    "B",
+    "D",
+    "V"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Il risentimento verso Delhi arriva al punto di rottura:",
+   "testo_u": "Sostituisci tutti i Governatori adiacenti a Devagiri con Emiri Ribelli e rimuovi un segnalino Tributo in una delle Province coinvolte.",
+   "sott_s": "Comandanti condannati a morte:",
+   "testo_s": "In una Provincia adiacente a Devagiri, sostituisci un Emiro con un Governatore per piazzare un segnalino Tributo."
+  },
+  {
+   "id": "E16",
+   "n": 16,
+   "titolo": "Il forte di Gulbarga",
+   "ordine": [
+    "B",
+    "V",
+    "D"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Difese ampliate nella prima capitale bahmani:",
+   "testo_u": "{B} può aggiungere fino a 3 Emiri e un Forte adiacenti a Gulbarga.",
+   "sott_s": "Il Regno Bahmani minaccia il controllo:",
+   "testo_s": "{D}/{V} può Marciare/Migrare gratis in una Provincia che contiene un Forte. Rimuovi il Forte lì."
+  },
+  {
+   "id": "E17",
+   "n": 17,
+   "titolo": "Lo shaikh sufi si trasferisce",
+   "ordine": [
+    "B",
+    "V",
+    "D"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Siraj-al-Din Junaidi prende dimora:",
+   "testo_u": "+1{IB}. {B} rimuove fino a 5 pezzi {D} fra le Province con un pezzo {B}.",
+   "sott_s": "Si guastano i rapporti fra sovrani bahmani e shaikh sufi:",
+   "testo_s": "Rimuovi un Forte e fino a 2 Emiri da una Provincia. −2{B}{R}."
+  },
+  {
+   "id": "E18",
+   "n": 18,
+   "titolo": "Centro di alta cultura",
+   "ordine": [
+    "B",
+    "V",
+    "D"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Il Regno Bahmani attira grandi menti da lontano; la cultura fiorisce nel Deccan:",
+   "testo_u": "+1{IB} per ogni Provincia che contiene almeno 1 pezzo {B} e 1 pezzo {V}.",
+   "sott_s": "Divisioni fra deccani e nuovi arrivati:",
+   "testo_s": "{D}/{V} può sostituire 1 Emiro con 1 Governatore/Raja. −1{IB}."
+  },
+  {
+   "id": "E19",
+   "n": 19,
+   "titolo": "La resistenza bengalese",
+   "ordine": [
+    "B",
+    "D",
+    "V"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "I governatori rivendicano più volte l'indipendenza:",
+   "testo_u": "Piazza fino a 2 Emiri/Raja sia a Jaunpur sia nel Bengala e rimuovi un segnalino Tributo in una delle due.",
+   "sott_s": "Criminali arruolati per riprendere il Bengala:",
+   "testo_s": "{D} può piazzare fino a 4 Truppe sia a Jaunpur sia nel Bengala e piazzare un segnalino Tributo in una delle due."
+  },
+  {
+   "id": "E20",
+   "n": 20,
+   "titolo": "La dinastia dei Ganga orientali",
+   "ordine": [
+    "D",
+    "B",
+    "V"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Un regno prospero entra in declino:",
+   "testo_u": "+1{IB}/{IV}. In Orissa o in una Provincia adiacente, {V}/{B} può Migrare gratis, poi Radunare gratis, poi Costruire.",
+   "sott_s": "Il Sultanato invade l'Orissa:",
+   "testo_s": "In Orissa, {D} può rimuovere un Tempio/Forte, piazzare un Governatore, una Qasbah, fino a 2 Truppe e un segnalino Tributo."
+  },
+  {
+   "id": "E21",
+   "n": 21,
+   "titolo": "La catena dei Vindhya",
+   "ordine": [
+    "D",
+    "B",
+    "V"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": true,
+   "sott_u": "La regione montuosa offre una barriera naturale contro Delhi:",
+   "testo_u": "{B}/{V} può spostare a Delhi qualsiasi Truppa {D} in Gondwana e Madhyadesh.",
+   "sott_s": "Lunghe campagne senza opposizione:",
+   "testo_s": "{D} può fare una Campagna, poi Governare, Attaccare o Esigere Obbedienza in una Provincia adiacente ai Vindhya."
+  },
+  {
+   "id": "E22",
+   "n": 22,
+   "titolo": "Un nuovo calcolo",
+   "ordine": [
+    "D",
+    "V",
+    "B"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Madhava di Sangamagrama fonda la Scuola di astronomia e matematica del Kerala:",
+   "testo_u": "{V}/{B} può Costruire.",
+   "sott_s": "I trattati matematici di Narayana Pandita offrono intuizioni subito utili:",
+   "testo_s": "{D} può piazzare 1 Truppa in uno spazio, fino a 2 Truppe in un secondo e fino a 4 in un terzo."
+  },
+  {
+   "id": "E23",
+   "n": 23,
+   "titolo": "Il tempio di Virupaksha",
+   "ordine": [
+    "V",
+    "D",
+    "B"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Il tempio di Shiva riunisce i culti regionali della dea:",
+   "testo_u": "+1{IV}. {V} può Costruire, poi in ogni Provincia con un Tempio {V} può sostituire un'Unità con un Raja.",
+   "sott_s": "Simboli di sovranità distrutti:",
+   "testo_s": "Una Fazione può piazzare fino a 4 sue Unità in una Provincia che contiene un Tempio, rimuovere il Tempio e prendere fino a 2{R} da {V}."
+  },
+  {
+   "id": "E24",
+   "n": 24,
+   "titolo": "I carri di pietra dei templi",
+   "ordine": [
+    "V",
+    "D",
+    "B"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "I carri portano le immagini degli dèi dei Purana:",
+   "testo_u": "{V} può Migrare gratis in fino a due luoghi, sostituendo un'Unità con un Raja in uno di essi.",
+   "sott_s": "Lo sviluppo culturale attira interesse:",
+   "testo_s": "{D}/{B} può piazzare fino a 2 Unità in ogni Provincia con un Tempio."
+  },
+  {
+   "id": "E25",
+   "n": 25,
+   "titolo": "Costruire un impero",
+   "ordine": [
+    "V",
+    "B",
+    "D"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "«Signori degli oceani d'oriente e d'occidente»:",
+   "testo_u": "{B}/{V} può fare Commercio/Tassare o guadagnare 3{R}.",
+   "sott_s": "Le nuove strade del Sultano penetrano nel Deccan:",
+   "testo_s": "{D} può piazzare fino a 2 Truppe in tre Province adiacenti a Goa o Warangal, e Governare gratis in una di esse."
+  },
+  {
+   "id": "E26",
+   "n": 26,
+   "titolo": "Di dèi e di re",
+   "ordine": [
+    "V",
+    "B",
+    "D"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": false,
+   "sott_u": "Il poeta telugu Srinatha rivoluziona l'arte e tesse la trama di un impero, mentre i canti devozionali sufi di Amir Khusrau lodano i Sultani di Delhi:",
+   "testo_u": "La Fazione che sceglie pesca a caso una carta Evento fuori gioco e la tiene scoperta accanto alla sua riserva. Una volta, questa Fazione può Eseguire il nuovo Evento al posto di quello di una carta futura.",
+   "sott_s": "",
+   "testo_s": ""
+  },
+  {
+   "id": "E27",
+   "n": 27,
+   "titolo": "Taghi l'inafferrabile",
+   "ordine": [
+    "D",
+    "V",
+    "B"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Un ribelle in fuga, una distrazione costosa:",
+   "testo_u": "+1{IB}. {B} può piazzare fino a 2 Emiri sia nel Sindh sia nel Gujarat. Nel Sindh piazza un Forte e rimuovi un segnalino Tributo.",
+   "sott_s": "Il Sultano marcia a ovest all'inseguimento:",
+   "testo_s": "{D} può piazzare fino a 2 Truppe e un Governatore sia nel Sindh sia nel Gujarat. Nel Sindh piazza una Qasbah e un segnalino Tributo."
+  },
+  {
+   "id": "E28",
+   "n": 28,
+   "titolo": "Il trono turchese",
+   "ordine": [
+    "B",
+    "V",
+    "D"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": true,
+   "sott_u": "I Bahmani attraversano il fiume Krishna verso il Telangana:",
+   "testo_u": "+1{IB} −1{IV}. {B} può spendere 1{C} per piazzare 2 Emiri e rimuovere 1 Raja nell'Andhra.",
+   "sott_s": "I Nayaka del Telangana implorano gli alleati di attaccare:",
+   "testo_s": "In un luogo con un pezzo {B}, {D}/{V} può piazzare fino a 2 Truppe/Raja, poi Attaccare gratis {B}, che non tira dadi in difesa."
+  },
+  {
+   "id": "E29",
+   "n": 29,
+   "titolo": "Ashvapati, signore dei cavalli",
+   "ordine": [
+    "B",
+    "D",
+    "V"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": true,
+   "sott_u": "I sovrani bahmani paragonati a un dio indù:",
+   "testo_u": "{B} guadagna 3{C}, poi può eseguire un Attacco Limitato gratuito.",
+   "sott_s": "Cavalli da guerra e tecniche d'assedio importati d'oltremare:",
+   "testo_s": "Spendi un numero di {R} per guadagnare altrettanta {C} (massimo 3), poi puoi eseguire un Attacco Limitato gratuito."
+  },
+  {
+   "id": "E30",
+   "n": 30,
+   "titolo": "Bara Gazi Toph",
+   "ordine": [
+    "B",
+    "D",
+    "V"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Cannoni giganteschi difendono i forti bahmani:",
+   "testo_u": "In ogni Provincia con un Forte, {B} può Attaccare gratis. Il difensore non tira dadi.",
+   "sott_s": "Polvere da sparo e cannoni compaiono all'improvviso nel subcontinente:",
+   "testo_s": "Esegui un Attacco Limitato gratuito. Il difensore non tira dadi; l'attaccante tira 4 dadi anche se c'è un Forte."
+  },
+  {
+   "id": "E31",
+   "n": 31,
+   "titolo": "Il Doab di Raichur",
+   "ordine": [
+    "B",
+    "V",
+    "D"
+   ],
+   "resta": false,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Razzie ripetute su terre fertili:",
+   "testo_u": "{B}/{V} può Migrare gratis in uno spazio adiacente a Vijayanagara, poi rimuovere 1 Unità avversaria e Attaccare lì gratis.",
+   "sott_s": "Perdite enormi in entrambi i regni:",
+   "testo_s": "{D} può rimuovere fino a 1 Forte e 1 Tempio adiacenti a Vijayanagara. −1{IB} −1{IV}."
+  },
+  {
+   "id": "E32",
+   "n": 32,
+   "titolo": "La lepre e i cani",
+   "ordine": [
+    "V",
+    "B",
+    "D"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Miti d'origine identici attingono ai culti regionali:",
+   "testo_u": "+1{IB}/{IV}, −1{IB}/{IV}. {B}/{V} può sostituire fino a 2 Raja/Emiri con 2 Emiri/Raja.",
+   "sott_s": "Valori persiani ereditati da Delhi:",
+   "testo_s": "−1{IB} −1{IV}"
+  },
+  {
+   "id": "E33",
+   "n": 33,
+   "titolo": "Il porto commerciale di Goa",
+   "ordine": [
+    "V",
+    "B",
+    "D"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Lotta per le rotte marittime vitali:",
+   "testo_u": "La Fazione con più pezzi adiacenti a Goa ({B} in caso di parità) rimuove fino a 3 Unità avversarie adiacenti a Goa; +2{R}.",
+   "sott_s": "La rivalità per i porti esplode:",
+   "testo_s": "{D} può dimezzare le {V}{R} e le {B}{R}, arrotondando per difetto."
+  },
+  {
+   "id": "E34",
+   "n": 34,
+   "titolo": "Il Sultano bahmani assassinato",
+   "ordine": [
+    "V",
+    "D",
+    "B"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": false,
+   "sott_u": "Vijayanagara conquista Goa mentre i Bahmani sono destabilizzati:",
+   "testo_u": "{V} può prendere fino a 2{R} e 2{C} da {B}.",
+   "sott_s": "Il successore bahmani apre un periodo di riforme sociali e rinascita culturale:",
+   "testo_s": "{B} può Cospirare o fare Commercio."
+  },
+  {
+   "id": "E35",
+   "n": 35,
+   "titolo": "Matrimoni fra indù e musulmani",
+   "ordine": [
+    "B",
+    "V",
+    "D"
+   ],
+   "resta": true,
+   "np_u": false,
+   "np_s": false,
+   "sott_u": "Il Sultano bahmani sposa una sposa indù:",
+   "testo_u": "+1{IB}/{IV}. {B}/{V} può piazzare una sua Unità in fino a tre Province che contengono Unità dell'altro fra {B}/{V}.",
+   "sott_s": "Diffusione e diluizione della cultura:",
+   "testo_s": "−1{IB} −1{IV}"
+  },
+  {
+   "id": "E36",
+   "n": 36,
+   "titolo": "Alleanze del nord",
+   "ordine": [
+    "V",
+    "D",
+    "B"
+   ],
+   "resta": true,
+   "np_u": true,
+   "np_s": false,
+   "sott_u": "Vijayanagara sonda un'alleanza con Delhi:",
+   "testo_u": "{V} può piazzare fino a 4 Raja adiacenti a Chittor.",
+   "sott_s": "Alleanza respinta:",
+   "testo_s": "−1{IV}. Rimuovi fino a 3 Raja dalla mappa."
+  }
+ ],
+ "invasioni": [
+  {
+   "id": "M1",
+   "tipo": "mongola",
+   "alleato": "B",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M2",
+   "tipo": "mongola",
+   "alleato": "V",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M3",
+   "tipo": "mongola",
+   "alleato": "B",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M4",
+   "tipo": "mongola",
+   "alleato": "V",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M5",
+   "tipo": "mongola",
+   "alleato": "B",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M6",
+   "tipo": "mongola",
+   "alleato": "V",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M7",
+   "tipo": "mongola",
+   "alleato": "B",
+   "titolo": "Invasione mongola"
+  },
+  {
+   "id": "M8",
+   "tipo": "mongola",
+   "alleato": "V",
+   "titolo": "Invasione mongola"
+  }
+ ],
+ "speciali": [
+  {
+   "id": "S1",
+   "tipo": "successione",
+   "titolo": "Apogeo del Sultanato di Delhi"
+  },
+  {
+   "id": "S2",
+   "tipo": "successione",
+   "titolo": "L'ascesa dei Sultani ribelli"
+  },
+  {
+   "id": "S3",
+   "tipo": "successione",
+   "titolo": "I signori del Deccan"
+  },
+  {
+   "id": "T1",
+   "tipo": "timuride",
+   "titolo": "Impero timuride"
+  },
+  {
+   "id": "T2",
+   "tipo": "timuride",
+   "titolo": "Impero timuride"
+  }
+ ]
+}

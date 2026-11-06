@@ -1,0 +1,579 @@
+{
+ "spazi": [
+  {
+   "id": "delhi",
+   "nome": "Delhi",
+   "tipo": "delhi",
+   "prosp": 0,
+   "x": 0.5059,
+   "y": 0.2606,
+   "adj": [
+    "punjab",
+    "rajput",
+    "malwa",
+    "jaunpur"
+   ]
+  },
+  {
+   "id": "passi",
+   "nome": "Passi montani",
+   "tipo": "mongola",
+   "prosp": 0,
+   "x": 0.2431,
+   "y": 0.1121,
+   "adj": [
+    "punjab",
+    "sindh"
+   ]
+  },
+  {
+   "id": "punjab",
+   "nome": "Punjab",
+   "tipo": "mongola",
+   "prosp": 0,
+   "x": 0.4392,
+   "y": 0.1455,
+   "adj": [
+    "passi",
+    "delhi",
+    "rajput",
+    "sindh"
+   ]
+  },
+  {
+   "id": "sindh",
+   "nome": "Sindh",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.0612,
+   "y": 0.3061,
+   "adj": [
+    "passi",
+    "punjab",
+    "rajput",
+    "gujarat"
+   ],
+   "mx": 0.051,
+   "my": 0.2321
+  },
+  {
+   "id": "rajput",
+   "nome": "Regni Rajput",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.2,
+   "y": 0.3061,
+   "adj": [
+    "punjab",
+    "delhi",
+    "sindh",
+    "gujarat",
+    "malwa"
+   ],
+   "mx": 0.2588,
+   "my": 0.2394
+  },
+  {
+   "id": "gujarat",
+   "nome": "Gujarat",
+   "tipo": "prov",
+   "prosp": 2,
+   "x": 0.3059,
+   "y": 0.4485,
+   "adj": [
+    "sindh",
+    "rajput",
+    "malwa",
+    "maharashtra",
+    "madhyadesh"
+   ],
+   "mx": 0.1686,
+   "my": 0.4061
+  },
+  {
+   "id": "malwa",
+   "nome": "Malwa",
+   "tipo": "prov",
+   "prosp": 2,
+   "x": 0.4039,
+   "y": 0.3667,
+   "adj": [
+    "delhi",
+    "rajput",
+    "gujarat",
+    "jaunpur",
+    "madhyadesh",
+    "maharashtra"
+   ],
+   "mx": 0.4745,
+   "my": 0.3394
+  },
+  {
+   "id": "jaunpur",
+   "nome": "Jaunpur",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.6902,
+   "y": 0.3485,
+   "adj": [
+    "delhi",
+    "malwa",
+    "bengal",
+    "gondwana"
+   ],
+   "mx": 0.698,
+   "my": 0.2758
+  },
+  {
+   "id": "bengal",
+   "nome": "Bengala",
+   "tipo": "prov",
+   "prosp": 2,
+   "x": 0.8706,
+   "y": 0.3939,
+   "adj": [
+    "jaunpur",
+    "gondwana",
+    "orissa"
+   ],
+   "mx": 0.9333,
+   "my": 0.3224
+  },
+  {
+   "id": "gondwana",
+   "nome": "Gondwana",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.7333,
+   "y": 0.5152,
+   "adj": [
+    "jaunpur",
+    "bengal",
+    "madhyadesh",
+    "orissa",
+    "andhra"
+   ],
+   "mx": 0.7153,
+   "my": 0.4442
+  },
+  {
+   "id": "madhyadesh",
+   "nome": "Madhyadesh",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.5294,
+   "y": 0.5667,
+   "adj": [
+    "gujarat",
+    "malwa",
+    "gondwana",
+    "maharashtra",
+    "andhra",
+    "orissa"
+   ],
+   "mx": 0.5255,
+   "my": 0.4921
+  },
+  {
+   "id": "orissa",
+   "nome": "Orissa",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.8314,
+   "y": 0.5818,
+   "adj": [
+    "bengal",
+    "gondwana",
+    "madhyadesh",
+    "andhra"
+   ],
+   "mx": 0.8078,
+   "my": 0.5152
+  },
+  {
+   "id": "maharashtra",
+   "nome": "Maharashtra",
+   "tipo": "prov",
+   "prosp": 2,
+   "x": 0.3608,
+   "y": 0.6576,
+   "adj": [
+    "gujarat",
+    "malwa",
+    "madhyadesh",
+    "andhra",
+    "karnataka"
+   ],
+   "mx": 0.3427,
+   "my": 0.5848
+  },
+  {
+   "id": "andhra",
+   "nome": "Andhra",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.6275,
+   "y": 0.7303,
+   "adj": [
+    "gondwana",
+    "madhyadesh",
+    "orissa",
+    "maharashtra",
+    "karnataka",
+    "tamilakam"
+   ],
+   "mx": 0.5804,
+   "my": 0.6588
+  },
+  {
+   "id": "karnataka",
+   "nome": "Karnataka",
+   "tipo": "prov",
+   "prosp": 2,
+   "x": 0.4431,
+   "y": 0.8515,
+   "adj": [
+    "maharashtra",
+    "andhra",
+    "tamilakam"
+   ],
+   "mx": 0.4298,
+   "my": 0.7727
+  },
+  {
+   "id": "tamilakam",
+   "nome": "Tamilakam",
+   "tipo": "prov",
+   "prosp": 1,
+   "x": 0.5647,
+   "y": 0.9182,
+   "adj": [
+    "andhra",
+    "karnataka"
+   ],
+   "mx": 0.5529,
+   "my": 0.8455
+  }
+ ],
+ "citta": {
+  "chittor": [
+   "rajput",
+   "gujarat",
+   "malwa"
+  ],
+  "devagiri": [
+   "gujarat",
+   "malwa",
+   "madhyadesh",
+   "maharashtra"
+  ],
+  "warangal": [
+   "madhyadesh",
+   "gondwana",
+   "orissa",
+   "andhra"
+  ],
+  "gulbarga": [
+   "maharashtra",
+   "madhyadesh",
+   "andhra"
+  ],
+  "goa": [
+   "maharashtra",
+   "karnataka"
+  ],
+  "vijayanagara": [
+   "maharashtra",
+   "karnataka",
+   "andhra"
+  ],
+  "vindhya": [
+   "malwa",
+   "jaunpur",
+   "madhyadesh",
+   "gondwana"
+  ]
+ },
+ "setup": {
+  "spazi": {
+   "delhi": {
+    "t": 4
+   },
+   "passi": {
+    "t": 2
+   },
+   "punjab": {
+    "t": 4
+   },
+   "malwa": {
+    "t": 3,
+    "g": 1
+   },
+   "jaunpur": {
+    "t": 2
+   },
+   "madhyadesh": {
+    "t": 2,
+    "a": 2
+   },
+   "sindh": {
+    "t": 1
+   },
+   "rajput": {
+    "t": 1
+   },
+   "gujarat": {
+    "t": 1,
+    "a": 1
+   },
+   "maharashtra": {
+    "a": 4
+   },
+   "gondwana": {
+    "a": 1
+   },
+   "andhra": {
+    "t": 1,
+    "q": 1,
+    "r": 2
+   },
+   "karnataka": {
+    "r": 3
+   },
+   "tamilakam": {
+    "t": 1,
+    "r": 1
+   }
+  },
+  "disp": {
+   "t": 10,
+   "g": 4,
+   "q": 4,
+   "a": 6,
+   "f": 5,
+   "r": 8,
+   "tp": 5,
+   "m": 12
+  },
+  "ris": {
+   "D": 12,
+   "B": 6,
+   "V": 7
+  },
+  "cav": {
+   "D": 2,
+   "B": 0,
+   "V": 0
+  },
+  "slot": {
+   "B": {
+    "2": 2,
+    "4": 2
+   },
+   "V": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 2
+   }
+  }
+ },
+ "tabellone": {
+  "traccia": [
+   [
+    0.0353,
+    0.0273
+   ],
+   [
+    0.0867,
+    0.0273
+   ],
+   [
+    0.1382,
+    0.0273
+   ],
+   [
+    0.1896,
+    0.0273
+   ],
+   [
+    0.2411,
+    0.0273
+   ],
+   [
+    0.2925,
+    0.0273
+   ],
+   [
+    0.344,
+    0.0273
+   ],
+   [
+    0.3955,
+    0.0273
+   ],
+   [
+    0.4469,
+    0.0273
+   ],
+   [
+    0.4984,
+    0.0273
+   ],
+   [
+    0.5498,
+    0.0273
+   ],
+   [
+    0.6013,
+    0.0273
+   ],
+   [
+    0.6527,
+    0.0273
+   ],
+   [
+    0.7042,
+    0.0273
+   ],
+   [
+    0.7556,
+    0.0273
+   ],
+   [
+    0.8071,
+    0.0273
+   ],
+   [
+    0.8585,
+    0.0273
+   ],
+   [
+    0.91,
+    0.0273
+   ],
+   [
+    0.9614,
+    0.0273
+   ],
+   [
+    0.9608,
+    0.0668
+   ],
+   [
+    0.9608,
+    0.1063
+   ],
+   [
+    0.9608,
+    0.1458
+   ],
+   [
+    0.9608,
+    0.1853
+   ],
+   [
+    0.9608,
+    0.2248
+   ],
+   [
+    0.9608,
+    0.2644
+   ]
+  ],
+  "infl": {
+   "B": [
+    [
+     0.0392,
+     0.7406
+    ],
+    [
+     0.0941,
+     0.7406
+    ],
+    [
+     0.149,
+     0.7406
+    ],
+    [
+     0.2039,
+     0.7406
+    ],
+    [
+     0.2588,
+     0.7406
+    ]
+   ],
+   "V": [
+    [
+     0.0392,
+     0.803
+    ],
+    [
+     0.0941,
+     0.803
+    ],
+    [
+     0.149,
+     0.803
+    ],
+    [
+     0.2039,
+     0.803
+    ],
+    [
+     0.2588,
+     0.803
+    ]
+   ]
+  },
+  "seq": {
+   "elig": [
+    0.7035,
+    0.8939
+   ],
+   "cd": [
+    0.8259,
+    0.8545
+   ],
+   "ec": [
+    0.8259,
+    0.9242
+   ],
+   "limitata": [
+    0.7035,
+    0.8121
+   ],
+   "passa": [
+    0.7035,
+    0.9697
+   ],
+   "inelig": [
+    0.949,
+    0.8939
+   ]
+  },
+  "box": {
+   "M": [
+    0.0863,
+    0.097
+   ],
+   "D": [
+    0.7765,
+    0.1242
+   ],
+   "B": [
+    0.1098,
+    0.6242
+   ],
+   "V": [
+    0.1098,
+    0.9121
+   ]
+  },
+  "dinastia": [
+   0.8259,
+   0.7636
+  ]
+ }
+}
