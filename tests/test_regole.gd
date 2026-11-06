@@ -59,5 +59,11 @@ func _init() -> void:
 		ok(m2.n_pezzi("maharashtra", "B") == prima - int(lb.get("persi_d", -1)), "le perdite del difensore corrispondono ai colpi")
 	else:
 		ok(true, "la battaglia chiede le perdite (scelta del difensore)")
+	# preparazione dei bot «esperto»
+	var m3 := Motore.new()
+	m3.nuova(5, {"bot_diff": {"D": "esperto", "B": "esperto", "V": "esperto"}})
+	ok(int(m3.s["infl"]["B"]) == 4 and int(m3.s["infl"]["V"]) == 4, "bot esperti: Influenza 4")
+	ok(int(m3.X("karnataka")["tp"]) == 1 and int(m3.X("maharashtra")["f"]) == 1 and int(m3.X("bengal")["q"]) == 1, "bot esperti: Templi, Forti e Qasbah iniziali")
+	ok(m3.disp("r") == 16 and m3.disp("a") == 10, "bot esperti: tutte le Unità del tracciato liberate")
 	print("errori: ", errori)
 	quit(1 if errori > 0 else 0)

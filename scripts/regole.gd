@@ -133,6 +133,8 @@ func comando(f: String, opz: Dictionary) -> void:
 	nota("%s: %s%s." % [breve(f), nome_cmd(c), " limitato" if opz.get("limitata", false) else ""])
 	s["tmp"]["usati"] = {}
 	s["tmp"]["scelti"] = []
+	s["tmp"]["cmd"] = c
+	s["tmp"]["cmd_gratis"] = opz.get("gratis", false)
 	var maxn: int = 1 if opz.get("limitata", false) else int(opz.get("max", 99))
 	if s["opz"].get("ombra_timur", false) and int(s["timur"]) >= 1:
 		maxn = 1
@@ -219,7 +221,7 @@ func cmd_marcia(f: String, id: String, _opz: Dictionary) -> void:
 			var mx := _mobili(a, k)
 			if mx <= 0:
 				continue
-			var n := numero(f, "Marcia verso %s: quanti %s sposti da %s?" % [nome_sp(id), nome_pezzo(k, 2), nome_sp(a)], 0, mx, "n_marcia")
+			var n := numero(f, "Marcia verso %s: quanti %s sposti da %s?" % [nome_sp(id), nome_pezzo(k, 2), nome_sp(a)], 0, mx, "n_marcia", {"da": a, "a": id, "k": k})
 			if ferma():
 				return
 			if n > 0:
@@ -427,7 +429,7 @@ func cmd_migra(f: String, id: String, _opz: Dictionary) -> void:
 		var mx: int = min(resto, _attaccanti_qui(f, a))
 		if mx <= 0:
 			continue
-		var n := numero(f, "Migrazione verso %s: quanti %s porti da %s?" % [nome_sp(id), nome_pezzo(ks[0], 2), nome_sp(a)], 0, mx, "n_migra")
+		var n := numero(f, "Migrazione verso %s: quanti %s porti da %s?" % [nome_sp(id), nome_pezzo(ks[0], 2), nome_sp(a)], 0, mx, "n_migra", {"da": a, "a": id})
 		if ferma():
 			return
 		if n <= 0:
@@ -508,13 +510,13 @@ func battaglia(fa: String, fd: String, id: String, att: Dictionary, dadi_a: int,
 	if fa == "M":
 		_carica_mongola(ra, na)
 	else:
-		_usa_cavalleria(fa, ra, rd, na, id)
+		_usa_cavalleria(fa, ra, rd, na, id, nd)
 		if ferma():
 			return
 	if fd == "M":
 		_carica_mongola(rd, nd)
 	else:
-		_usa_cavalleria(fd, rd, ra, nd, id)
+		_usa_cavalleria(fd, rd, ra, nd, id, na)
 		if ferma():
 			return
 	var ca: int = min(na, 5)
@@ -566,7 +568,7 @@ func _carica_mongola(dadi: Array, n: int) -> void:
 			return
 
 
-func _usa_cavalleria(f: String, miei: Array, suoi: Array, n: int, id: String) -> void:
+func _usa_cavalleria(f: String, miei: Array, suoi: Array, n: int, id: String, n_suoi: int = 0) -> void:
 	var giro := 0
 	while int(s["cav"][f]) > 0 and giro < 12:
 		giro += 1
@@ -585,7 +587,7 @@ func _usa_cavalleria(f: String, miei: Array, suoi: Array, n: int, id: String) ->
 		if ops.is_empty():
 			return
 		ops.append(o("fine", "Non usare (altra) Cavalleria"))
-		var v = chiedi(f, "Battaglia in %s — i tuoi dadi %s, quelli avversari %s, colpisci con %d o meno. Cavalleria: %d." % [nome_sp(id), _dadi_txt(miei), _dadi_txt(suoi), min(n, 5), int(s["cav"][f])], ops, {"tag": "cavalleria"})
+		var v = chiedi(f, "Battaglia in %s — i tuoi dadi %s, quelli avversari %s, colpisci con %d o meno. Cavalleria: %d." % [nome_sp(id), _dadi_txt(miei), _dadi_txt(suoi), min(n, 5), int(s["cav"][f])], ops, {"tag": "cavalleria", "miei": miei.duplicate(), "suoi": suoi.duplicate(), "cap_mio": min(n, 5), "cap_suo": min(n_suoi, 5), "usate": giro - 1})
 		if ferma() or v == "fine":
 			return
 		var i := int(str(v).substr(1))
@@ -682,7 +684,7 @@ func dec_campagna(f: String, opz: Dictionary) -> void:
 		return
 	var porto := {"t": 0, "g": 0}
 	for k in ["t", "g"]:
-		var n := numero(f, "Campagna: quanti %s partono da %s?" % [nome_pezzo(k, 2), nome_sp(origine)], 0, int(X(origine)[k]), "camp_n")
+		var n := numero(f, "Campagna: quanti %s partono da %s?" % [nome_pezzo(k, 2), nome_sp(origine)], 0, int(X(origine)[k]), "camp_n", {"da": origine, "k": k})
 		if ferma():
 			return
 		X(origine)[k] = int(X(origine)[k]) - n
@@ -692,6 +694,7 @@ func dec_campagna(f: String, opz: Dictionary) -> void:
 	for passo in 3:
 		var fine_ok: bool = not opz.has("fine_in") or (opz["fine_in"] as Callable).call(qui)
 		var ops := func(id): return adiacente(qui, id) and ammesso.call(id) and id != origine
+		s["tmp"]["camp_qui"] = qui
 		var nx = scegli_spazio(f, "Campagna: passo %d di 3 (ora in %s con %d Truppe e %d Governatori)" % [passo + 1, nome_sp(qui), porto["t"], porto["g"]], ops, fine_ok and passo > 0, "camp_passo", "Fermati qui")
 		if ferma():
 			return

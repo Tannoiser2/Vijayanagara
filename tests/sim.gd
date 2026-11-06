@@ -31,6 +31,14 @@ func _init() -> void:
 				var v
 				if modo == "ia":
 					v = IA.rispondi(base, ans, m.need, piano, rng, forza)
+				elif modo == "bot":
+					v = Bot.rispondi(base, ans, m.need, m, [])
+				elif modo == "misto":
+					# Sultanato all'IA a simulazioni, Bahmani e Vijayanagara ai bot ufficiali
+					if m.need["f"] == "D":
+						v = IA.rispondi(base, ans, m.need, piano, rng, forza)
+					else:
+						v = Bot.rispondi(base, ans, m.need, m, ["D"])
 				else:
 					v = IA.politica_casuale(m, m.need, rng)
 				ans.append(v)

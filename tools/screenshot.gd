@@ -10,6 +10,9 @@ func _init() -> void:
 	if a[0] != "menu":
 		if a[0] == "demo":
 			scena._nuova_locale(true)
+		elif a[0] == "bot":
+			scena.scelta_menu = {"D": "umano", "B": "bot", "V": "bot"}
+			scena._nuova_locale(false)
 		else:
 			scena.scelta_menu = {"D": "ia", "B": "ia", "V": "ia"}
 			scena.scelta_menu[a[0]] = "umano"

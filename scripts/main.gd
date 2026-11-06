@@ -59,6 +59,11 @@ var tasti_ctrl: Dictionary = {}
 var btn_avvia_stanza: Button
 var timur_chk: CheckBox
 var forza_btns: Dictionary = {}
+var bot_diff := "normale"
+var diff_btns: Dictionary = {}
+var carta_bot_tex: TextureRect
+var lbl_carta_bot: Label
+var ultima_bot := {}
 
 
 func _ready() -> void:
@@ -123,7 +128,7 @@ func _costruisci_menu() -> void:
 	pv.add_theme_constant_override("separation", 9)
 	pan.add_child(pv)
 	pv.add_child(_lbl_carta("Partita locale", 27, true))
-	var sp := _lbl_carta("Scegli chi guida ogni fazione: tu (anche in più sullo stesso schermo) o l'IA. I Mongoli li muovono a turno Bahmani e Vijayanagara.", 16)
+	var sp := _lbl_carta("Scegli chi guida ogni fazione: tu (anche in più sullo stesso schermo), l'IA a simulazioni oppure il bot ufficiale (carte azione e schede Non-Player). I Mongoli li muovono a turno Bahmani e Vijayanagara.", 16)
 	sp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sp.add_theme_color_override("font_color", Tema.INK_DIM)
 	pv.add_child(sp)
@@ -141,11 +146,11 @@ func _costruisci_menu() -> void:
 		n.custom_minimum_size = Vector2(300, 0)
 		r.add_child(n)
 		tasti_ctrl[f] = {}
-		for k in [["umano", "Tu"], ["ia", "IA"]]:
+		for k in [["umano", "Tu"], ["ia", "IA"], ["bot", "Bot"]]:
 			var b := Button.new()
 			b.text = k[1]
 			b.toggle_mode = true
-			b.custom_minimum_size = Vector2(110, 38)
+			b.custom_minimum_size = Vector2(96, 38)
 			Tema.tasto_carta(b)
 			b.pressed.connect(_scegli_ctrl.bind(f, k[0]))
 			r.add_child(b)
@@ -189,6 +194,19 @@ func _costruisci_menu() -> void:
 		b.pressed.connect(_scegli_forza.bind(k[0]))
 		r1b.add_child(b)
 		forza_btns[k[0]] = b
+	var r1c := HBoxContainer.new()
+	r1c.add_theme_constant_override("separation", 10)
+	pv.add_child(r1c)
+	r1c.add_child(_lbl_carta("Difficoltà dei bot (preparazione delle schede):", 18))
+	for k in [["normale", "Normale"], ["difficile", "Difficile"], ["esperto", "Esperto"]]:
+		var b := Button.new()
+		b.text = k[1]
+		b.toggle_mode = true
+		b.custom_minimum_size = Vector2(96, 34)
+		Tema.tasto_carta(b)
+		b.pressed.connect(func(): bot_diff = k[0]; _aggiorna_menu())
+		r1c.add_child(b)
+		diff_btns[k[0]] = b
 	var r2 := HBoxContainer.new()
 	r2.add_theme_constant_override("separation", 10)
 	pv.add_child(r2)
@@ -246,7 +264,7 @@ func _costruisci_menu() -> void:
 	r5.add_theme_constant_override("separation", 8)
 	pv.add_child(r5)
 	btn_avvia_stanza = Button.new()
-	btn_avvia_stanza.text = "Avvia ora (l'IA prende i posti liberi)"
+	btn_avvia_stanza.text = "Avvia ora (IA o bot ai posti liberi)"
 	btn_avvia_stanza.custom_minimum_size = Vector2(0, 40)
 	btn_avvia_stanza.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btn_avvia_stanza.disabled = true
@@ -297,6 +315,9 @@ func _aggiorna_menu() -> void:
 			var b: Button = tasti_ctrl[f][k]
 			b.set_pressed_no_signal(scelta_menu[f] == k)
 			Tema.tasto_carta(b, scelta_menu[f] == k, Tema.FAZ[f].darkened(0.1))
+	for k in diff_btns:
+		diff_btns[k].set_pressed_no_signal(k == bot_diff)
+		Tema.tasto_carta(diff_btns[k], k == bot_diff, Color("6b4f1d"))
 	for n in forza_btns:
 		forza_btns[n].set_pressed_no_signal(n == ia_forza)
 		Tema.tasto_carta(forza_btns[n], n == ia_forza, Color("6b4f1d"))
@@ -312,6 +333,12 @@ func _nuova_locale(demo: bool) -> void:
 	var o2 := {}
 	if timur_chk.button_pressed:
 		o2["ombra_timur"] = true
+	var bd := {}
+	for f in controllo:
+		if controllo[f] == "bot":
+			bd[f] = bot_diff
+	if not bd.is_empty():
+		o2["bot_diff"] = bd
 	avvia(rng.randi() % 1000000000 + 1, o2, [])
 
 
@@ -467,6 +494,16 @@ func _costruisci_partita() -> void:
 	lbl_carta.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lbl_carta.custom_minimum_size = Vector2(350, 0)
 	pannello.add_child(lbl_carta)
+	lbl_carta_bot = _titoletto("Carta azione del bot")
+	pannello.add_child(lbl_carta_bot)
+	carta_bot_tex = TextureRect.new()
+	carta_bot_tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	carta_bot_tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	carta_bot_tex.custom_minimum_size = Vector2(360, 420)
+	carta_bot_tex.mouse_filter = Control.MOUSE_FILTER_STOP
+	carta_bot_tex.tooltip_text = "Clicca per ingrandire"
+	carta_bot_tex.gui_input.connect(func(e): if e is InputEventMouseButton and e.pressed and carta_bot_tex.texture: carta_pop_tex.texture = carta_bot_tex.texture; carta_pop.popup_centered(Vector2(580, 800)))
+	pannello.add_child(carta_bot_tex)
 	pannello.add_child(_titoletto("Eventi riservati e carte giocate"))
 	riserva_box = VBoxContainer.new()
 	pannello.add_child(riserva_box)
@@ -552,11 +589,15 @@ func avvia(sm: int, o2: Dictionary, atti_prec: Array, ans_prec: Array = []) -> v
 	ans = ans_prec.duplicate()
 	piano = []
 	storia = []
+	ultima_bot = {}
+	if carta_bot_tex:
+		carta_bot_tex.texture = null
+		lbl_carta_bot.text = "CARTA AZIONE DEL BOT"
 	menu.visible = false
 	partita.visible = true
 	var chi: Array = []
 	for f in ORDINE_F:
-		chi.append("%s: %s" % [Nucleo.BREVI[f], {"umano": "tu", "ia": "IA", "remoto": "online"}.get(controllo[f], "")])
+		chi.append("%s: %s" % [Nucleo.BREVI[f], {"umano": "tu", "ia": "IA", "bot": "bot", "remoto": "online"}.get(controllo[f], "")])
 	(partita.find_child("Sotto", true, false) as Label).text = " · ".join(chi)
 	mappa.imposta(m)
 	call_deferred("_passo")
@@ -603,6 +644,8 @@ func _passo() -> void:
 	var chi: String = controllo.get(f, "umano")
 	if chi == "ia":
 		_turno_ia()
+	elif chi == "bot":
+		_turno_bot()
 	elif chi == "remoto":
 		_invia_rete(atti.size(), ans, false)
 	_mostra_domanda(chi)
@@ -618,6 +661,42 @@ func _turno_ia() -> void:
 		ia_in_corso = false
 		return
 	var v = IA.rispondi(base, ans, m.need, piano, rng, ia_forza)
+	ans.append(v)
+	ia_in_corso = false
+	_passo()
+
+
+func umani() -> Array:
+	var u: Array = []
+	for f in ORDINE_F:
+		if controllo.get(f, "") in ["umano", "remoto"]:
+			u.append(f)
+	return u
+
+
+func _turno_bot() -> void:
+	if ia_in_corso:
+		return
+	ia_in_corso = true
+	var demo: bool = not controllo.values().has("umano") and not online
+	await get_tree().create_timer((0.5 if demo else 0.35) if ans.is_empty() else (0.12 if demo else 0.06)).timeout
+	if m == null or m.need == null or not partita.visible:
+		ia_in_corso = false
+		return
+	var f: String = m.need["f"]
+	var tag: String = str(m.need.get("x", {}).get("tag", ""))
+	if tag in ["casella", "cmd"] and ans.is_empty() or tag == "casella":
+		var p := Bot.piano_di(base, f, umani())
+		var cb: String = p.get("carta_bot", "")
+		if cb != "" and ultima_bot.get(f, "") != "%d:%s" % [atti.size(), cb]:
+			ultima_bot[f] = "%d:%s" % [atti.size(), cb]
+			registro_fisso.append("[color=#c9cec4]%s (bot) pesca la carta azione %s.[/color]" % [Nucleo.BREVI[f], cb])
+			carta_bot_tex.texture = load("res://assets/bot/%s.webp" % cb)
+			lbl_carta_bot.text = "CARTA AZIONE DEL BOT: %s (%s)" % [Nucleo.BREVI[f].to_upper(), cb]
+	elif tag == "mongolo" and carta_bot_tex != null:
+		carta_bot_tex.texture = load("res://assets/bot/%s.webp" % ("O" if m.need["testo"].contains("1 di 2") else "OO"))
+		lbl_carta_bot.text = "CARTA DEI MONGOLI (%s)" % Nucleo.BREVI[f].to_upper()
+	var v = Bot.rispondi(base, ans, m.need, m, umani())
 	ans.append(v)
 	ia_in_corso = false
 	_passo()
@@ -656,7 +735,7 @@ func _aggiorna_ui() -> void:
 	var di_turno: String = m.need["f"] if m.need != null else ""
 	for f in ORDINE_F:
 		var p: PanelContainer = chips[f]
-		(p.get_meta("n") as Label).text = Nucleo.BREVI[f] + {"ia": " · IA", "remoto": " · online", "umano": ""}.get(controllo.get(f, ""), "")
+		(p.get_meta("n") as Label).text = Nucleo.BREVI[f] + {"ia": " · IA", "bot": " · Bot", "remoto": " · online", "umano": ""}.get(controllo.get(f, ""), "")
 		var d := "PV %d · Ris. %d · Cav. %d" % [m.vp(f), int(s["ris"][f]), int(s["cav"][f])]
 		if f != "D":
 			d += " · Infl. %d" % int(s["infl"][f])
@@ -714,6 +793,9 @@ func _aggiorna_ui() -> void:
 		b.pressed.connect(_mostra_carta.bind(c))
 		hf.add_child(b)
 	riserva_box.add_child(hf)
+	var ci_sono_bot: bool = controllo.values().has("bot")
+	lbl_carta_bot.visible = ci_sono_bot
+	carta_bot_tex.visible = ci_sono_bot
 	stato_lbl.text = _testo_stato()
 	var righe = registro_fisso.slice(max(0, registro_fisso.size() - 400))
 	var corr: Array = []
@@ -761,7 +843,7 @@ func _mostra_domanda(chi: String) -> void:
 	var q: Dictionary = m.need
 	var f: String = q["f"]
 	banner.add_theme_stylebox_override("panel", Tema.box(Tema.FAZ[f].darkened(0.25), Tema.GOLD if chi == "umano" else Tema.FAZ[f].darkened(0.5), 2, 4, 10))
-	lbl_chi.text = m.nome_faz(f) + {"umano": " · tocca a te", "ia": " · l'IA sta pensando…", "remoto": " · in attesa del giocatore online"}.get(chi, "")
+	lbl_chi.text = m.nome_faz(f) + {"umano": " · tocca a te", "ia": " · l'IA sta pensando…", "bot": " · il bot segue la sua carta", "remoto": " · in attesa del giocatore online"}.get(chi, "")
 	lbl_domanda.text = q["testo"]
 	if chi != "umano":
 		return
@@ -906,7 +988,7 @@ func _process(delta: float) -> void:
 # ================================================================ SALVATAGGI
 
 func _dati_salvataggio() -> Dictionary:
-	return {"gioco": "vijayanagara", "seme": seme, "opz": opz, "atti": atti, "controllo": controllo, "forza": ia_forza, "v": 1}
+	return {"gioco": "vijayanagara", "seme": seme, "opz": opz, "atti": atti, "controllo": controllo, "forza": ia_forza, "v": 2}
 
 
 func _salva_locale() -> void:
@@ -984,7 +1066,8 @@ func _crea_stanza(f: String) -> void:
 	var nome := nome_edit.text.strip_edges()
 	if nome == "":
 		nome = "Giocatore"
-	var cfg := {"gioco": "vijayanagara", "seme": rng.randi() % 1000000000 + 1, "host": f, "forza": ia_forza, "opz": {"ombra_timur": true} if timur_chk.button_pressed else {}}
+	var o3 := {"ombra_timur": true} if timur_chk.button_pressed else {}
+	var cfg := {"gioco": "vijayanagara", "seme": rng.randi() % 1000000000 + 1, "host": f, "forza": ia_forza, "opz": o3, "liberi": "bot" if scelta_menu.values().has("bot") else "ia", "bot_diff": bot_diff}
 	var code = await rete.create_room(nome, cfg)
 	if code == "":
 		menu_msg.text = "Impossibile creare la stanza: " + rete.last_error
@@ -1032,6 +1115,15 @@ func _avvia_stanza() -> void:
 			posti[seats[k]["faz"]] = int(k)
 	var cfg := _cfg_stanza.duplicate()
 	cfg["posti"] = posti
+	if cfg.get("liberi", "ia") == "bot":
+		var bd := {}
+		for ff in ORDINE_F:
+			if not posti.has(ff):
+				bd[ff] = cfg.get("bot_diff", "normale")
+		if not bd.is_empty():
+			var oo: Dictionary = cfg.get("opz", {}).duplicate()
+			oo["bot_diff"] = bd
+			cfg["opz"] = oo
 	await rete.start_room(stanza, cfg)
 	_avvia_online(cfg, 0)
 
@@ -1088,7 +1180,7 @@ func _avvia_online(cfg: Dictionary, mio_posto: int) -> void:
 		elif posti.has(f):
 			controllo[f] = "remoto"
 		else:
-			controllo[f] = "ia" if host else "remoto"
+			controllo[f] = str(cfg.get("liberi", "ia")) if host else "remoto"
 	avvia(int(cfg["seme"]), cfg.get("opz", {}), [])
 	var mie: Array = []
 	for f in controllo:

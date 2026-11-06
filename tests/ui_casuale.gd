@@ -5,7 +5,7 @@ func _init() -> void:
 	root.add_child(scena)
 	root.size = Vector2i(1600, 900)
 	await process_frame
-	scena.scelta_menu = {"D": "umano", "B": "umano", "V": "umano"}
+	scena.scelta_menu = {"D": "umano", "B": "bot", "V": "umano"}
 	scena._nuova_locale(false)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 3

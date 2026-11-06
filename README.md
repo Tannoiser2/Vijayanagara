@@ -9,10 +9,13 @@ mossi a turno da Bahmani e Vijayanagara. La partita finisce con l'invasione di T
 
 ## Come si gioca
 
-- **Partita locale**: per ogni fazione scegli *Tu* o *IA* (anche due o tre persone sullo stesso schermo);
-  *IA contro IA* per una dimostrazione. Forza dell'IA: Rapida, Normale, Forte. Variante facoltativa «L'ombra di Timur».
+- **Partita locale**: per ogni fazione scegli *Tu*, *IA* (a simulazioni) o *Bot* (bot ufficiale con le carte azione
+  e le schede Non-Player), anche due o tre persone sullo stesso schermo; *IA contro IA* per una dimostrazione.
+  Forza dell'IA: Rapida, Normale, Forte. Difficoltà dei bot: Normale, Difficile, Esperto (preparazione delle schede).
+  Variante facoltativa «L'ombra di Timur».
 - **Online**: chi crea la stanza sceglie la sua fazione e comunica il codice di 4 lettere; gli altri entrano scegliendo
-  una fazione libera. L'host avvia quando vuole: i posti vuoti li gioca l'IA (calcolata dall'host).
+  una fazione libera. L'host avvia quando vuole: i posti vuoti li gioca l'IA o il bot (se nel menu c'è almeno un «Bot»),
+  calcolati dall'host.
   Se si ricarica la pagina, *Rientra nell'ultima stanza* ricostruisce la partita dal registro della stanza.
 - Ogni decisione è una domanda nel pannello a destra: si risponde coi tasti o cliccando sugli spazi evidenziati.
   *Annulla* torna indietro di una decisione (solo partite locali). *Regole* apre il riassunto in italiano.
@@ -26,11 +29,16 @@ mossi a turno da Bahmani e Vijayanagara. La partita finisce con l'invasione di T
   Caratteri: El Messiri (come l'originale) e Crimson Pro al posto del Minion (entrambi OFL, in `assets/fonts`).
 - Province, Prosperità e adiacenze ricavate dal tabellone (verificate con gli esempi del regolamento 1.3.5–1.3.6).
 
-## Bot ufficiali (da fare)
+## Bot ufficiali
 
-Il modulo TTS non contiene il materiale Non-Player (libretto Non-Player Rules, 12 carte Ibn Battuta, 3 schede
-Non-Player, carta Non-Player dei Mongoli). Per ora l'IA è a simulazioni, come in The British Way; quando il materiale
-sarà nella cartella del gioco si aggiungeranno i bot ufficiali come seconda modalità.
+`scripts/bot.gd` segue le 26 carte azione Non-Player (8 per fazione più le carte mongole O e OO) e le tre schede:
+scelta della casella, Eventi «efficaci» (i lati col simbolo Non-Player sono ignorati), tabelle di selezione degli
+spazi, priorità di pezzi e movimenti, Risorse (tutte per il Sultanato, fino a 1d6 per gli altri), Cavalleria,
+Successioni e Invasioni mongole. Le carte, scansionate in `Desktop/Ludoteca/Vijayanagara/Carte BOT.pdf`, sono
+ricomposte in italiano in `assets/bot/` e compaiono nel pannello quando un bot le pesca.
+Il bot non ha stato nascosto: le sue estrazioni dipendono da seme, atto e fazione, quindi salvataggi e online
+restano ricostruibili. Il libretto Non-Player Rules non era disponibile: dove le carte lasciano spazio
+(per esempio i dettagli degli Eventi) il bot sceglie con una breve simulazione secondo il punteggio della sua scheda.
 
 ## Struttura
 
@@ -43,7 +51,8 @@ sarà nella cartella del gioco si aggiungeranno i bot ufficiali come seconda mod
 - `dati/` — mappa e carte in italiano; `assets/` — tabellone, carte, segnalini, icone, caratteri.
 - Prove: `tests/sim.gd` (partite automatiche: `godot --headless -s res://tests/sim.gd -- 8 ia 40`),
   `tests/test_regole.gd`, `tests/salva.gd`, `tests/online.gd` (due client contro un finto Firebase locale),
-  `tests/registro.gd` (registro completo di una partita). `tools/controlla_glifi.py` verifica i caratteri dei font.
+  `tests/registro.gd` (registro completo di una partita), `tests/bot_traccia.gd` (partita di soli bot con i tempi);
+`godot --headless -s res://tests/sim.gd -- 40 bot` gioca 40 partite di soli bot. `tools/controlla_glifi.py` verifica i caratteri dei font.
 
 ## Pubblicazione
 

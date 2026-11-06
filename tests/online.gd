@@ -11,6 +11,7 @@ func _init() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 7 if ruolo == "host" else 8
 	scena.ia_forza = 12
+	scena.scelta_menu = {"D": "umano", "B": "umano", "V": "bot"}
 	if ruolo == "host":
 		scena.nome_edit.text = "Host"
 		scena._crea_stanza("D")

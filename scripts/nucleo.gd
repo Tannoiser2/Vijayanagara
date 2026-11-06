@@ -144,9 +144,34 @@ func nuova(seme: int, opzioni: Dictionary = {}) -> void:
 	s["coda"] = []
 	s["timur"] = 0
 	s["mazzo"] = _costruisci_mazzo()
+	_prepara_bot(opzioni.get("bot_diff", {}))
 	for id in ordine:
 		_aggiorna_controllo(id)
 	_pesca_carta()
+
+
+## Preparazione dei bot (schede Non-Player): «difficile» e «esperto» per ciascuna fazione automatica.
+func _prepara_bot(diff: Dictionary) -> void:
+	for f in diff:
+		var d: String = diff[f]
+		if d == "normale":
+			continue
+		match f:
+			"D":
+				var dove: Array = ["punjab", "gujarat"] + (["bengal", "madhyadesh"] if d == "esperto" else [])
+				for id in dove:
+					if disp("q") > 0 and int(X(id)["q"]) == 0:
+						s["disp"]["q"] = disp("q") - 1
+						X(id)["q"] = 1
+			"B", "V":
+				cambia_infl(f, 4)
+				if d == "esperto":
+					var k := "f" if f == "B" else "tp"
+					for id in (["maharashtra", "madhyadesh"] if f == "B" else ["karnataka", "andhra"]):
+						if disp(k) > 0:
+							s["disp"][k] = disp(k) - 1
+							X(id)[k] = 1
+	registro = []
 
 
 func _rand(n: int) -> int:
@@ -255,13 +280,15 @@ func si_no(f: String, testo: String, tag: String = "") -> bool:
 	return v == "si"
 
 
-func numero(f: String, testo: String, minn: int, maxn: int, tag: String = "") -> int:
+func numero(f: String, testo: String, minn: int, maxn: int, tag: String = "", extra: Dictionary = {}) -> int:
 	if maxn <= minn:
 		return max(maxn, 0)
 	var ops: Array = []
 	for i in range(minn, maxn + 1):
 		ops.append(o(i, str(i)))
-	var v = chiedi(f, testo, ops, {"tag": tag, "num": true})
+	var x := {"tag": tag, "num": true}
+	x.merge(extra)
+	var v = chiedi(f, testo, ops, x)
 	return 0 if v == null else int(v)
 
 
